@@ -1,0 +1,16 @@
+from: markdown
+to: docx
+output-file: output/rapport.docx
+input-files:
+- input/rapport.md
+verbosity: INFO
+pdf-engine: xelatex
+wrap: auto
+table-of-contents: true
+toc-depth: 4
+highlight-style: haddock
+citeproc: false
+filters:
+- mermaid-filter
+- pandoc-crossref
+- citeproc

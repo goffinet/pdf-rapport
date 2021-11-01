@@ -1,0 +1,22 @@
+name: Build document
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: goffinet/pandoc-latex@master
+        with:
+          args: "-d defaults_pdf.yml"
+      - uses: goffinet/pandoc-latex@master
+        with:
+          args: "-d defaults_docx.yml"
+      - uses: actions/upload-artifact@master
+        with:
+          name: rapport
+          path: output/*
