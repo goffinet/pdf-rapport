@@ -41,6 +41,8 @@ header-includes:
 # Links color
     - \usepackage{hyperref}
     - \hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue}
+# Subfigures (with caption)
+    - \usepackage{subfig}
 ---
 
 # Introduction
