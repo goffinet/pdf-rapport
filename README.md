@@ -110,8 +110,8 @@ author:
  - "*Rob Knell*"
 date: \today
 lang: fr-FR
-mainfont: Arimo #Arial, Arimo, Time New Roman, Verdana, Ubuntu, Ubuntu Condensed
-monofont: Ubuntu Mono # Courier New, FreeMono, Ubuntu Mono
+mainfont: Arimo #Arial, Arimo, Time New Roman, Verdana
+monofont: FreeMono # Courier New, FreeMono
 fontsize: 10pt
 papersize: a4
 geometry: portrait, headheight=25pt, tmargin=25mm, bmargin=20mm, innermargin=20mm, outermargin=20mm
@@ -207,14 +207,15 @@ Noto Music
 Noto Nastaliq Urdu
 Noto Sans
 Noto Sans ...
+Noto Serif
+Noto Serif Ahom
+Noto Serif Balinese
+Noto Serif Display
 Open Sans
 Terminus
 Times New Roman
 Tinos
 Trebuchet MS
-Ubuntu
-Ubuntu Condensed
-Ubuntu Mono
 Verdana
 Webdings
 ```
