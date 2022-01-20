@@ -1,22 +1,21 @@
-FROM pandoc/latex
+FROM pandoc/latex:2.16.2
 
 LABEL org.opencontainers.image.source https://github.com/goffinet/pandoc-latex
 
-ENV \
-    DATA_DIRECTORY=/data \
-    PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+RUN tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet \
+    tlmgr update \
+    && tlmgr install csquotes mdframed needspace sourcesanspro ly1 mweights \
+    sourcecodepro titling pagecolor epstopdf zref footnotebackref subfig float \
+    && apk add --update ghostscript
 
-RUN apk add --no-cache \
-    chromium \
-    nss \
+# Install Node and mermaid-filter
+
+ENV CHROME_BIN="/usr/bin/chromium-browser" \
+    PUPPETEER_SKIP_CHROMIUM_DOWNLOAD="true"
+
+RUN apk add --update udev ttf-freefont chromium npm \
     freetype \
     freetype-dev \
-    harfbuzz \
-    ca-certificates \
-    ttf-freefont \
-    nodejs \
-    npm \
-    yarn \
     msttcorefonts-installer \
     fontconfig \
     font-noto \
@@ -24,11 +23,9 @@ RUN apk add --no-cache \
     ttf-opensans \
     font-misc-misc \
     font-croscore \
-    ttf-ubuntu-font-family \
     && update-ms-fonts \
     && fc-cache -f \
-    && rm -rf /var/cache/*
-
-RUN npm install --global mermaid-filter --unsafe-perm=true && npm install
+    && rm -rf /var/cache/* \
+    && npm install -g mermaid-filter@1.4.5 --unsafe-perm=true
 
 RUN fc-list : family | cut -f1 -d"," | sort | uniq
